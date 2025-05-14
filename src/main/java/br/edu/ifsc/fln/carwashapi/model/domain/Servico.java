@@ -16,5 +16,6 @@ public class Servico {
     private Integer id;
     private String descricao;
     private double valor;
+    @Enumerated(EnumType.STRING)
     private ECategoria categoria;
 }
