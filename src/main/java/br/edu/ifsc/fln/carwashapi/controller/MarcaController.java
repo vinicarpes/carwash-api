@@ -1,6 +1,6 @@
 package br.edu.ifsc.fln.carwashapi.controller;
 
-import br.edu.ifsc.fln.carwashapi.domain.Marca;
+import br.edu.ifsc.fln.carwashapi.model.domain.Marca;
 import br.edu.ifsc.fln.carwashapi.repository.MarcaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

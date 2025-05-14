@@ -1,4 +1,4 @@
-package br.edu.ifsc.fln.carwashapi.domain;
+package br.edu.ifsc.fln.carwashapi.model.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
