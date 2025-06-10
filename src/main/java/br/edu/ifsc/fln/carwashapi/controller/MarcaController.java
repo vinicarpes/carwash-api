@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/marca")
+@RequestMapping("/marcas")
 public class MarcaController {
     @Autowired
     private MarcaRepository marcaRepository;
@@ -28,12 +28,32 @@ public class MarcaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Marca> get(@PathVariable Long id){
+    public ResponseEntity<Marca> get(@PathVariable int id){
         Optional<Marca> marca = marcaRepository.findById(id);
         if (marca.isPresent()) {
             return ResponseEntity.ok(marca.get());
         }else {
             return ResponseEntity.notFound().build();
         }
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Marca> update(@PathVariable int id, @RequestBody Marca marca){
+        Optional<Marca> marcaOptional = marcaRepository.findById(id);
+        if (marcaOptional.isPresent()) {
+            marca.setId(id);
+            marcaRepository.save(marca);
+            return ResponseEntity.ok(marca);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable int id){
+        Optional<Marca> marca = marcaRepository.findById(id);
+        if (marca.isPresent()) {
+            marcaRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }

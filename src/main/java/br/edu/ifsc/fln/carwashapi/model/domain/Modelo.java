@@ -1,21 +1,22 @@
 package br.edu.ifsc.fln.carwashapi.model.domain;
 
-import br.edu.ifsc.fln.carwashapi.model.enums.ECategoria;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
+@EqualsAndHashCode(of = "id")
 @Getter
 @Setter
-@EqualsAndHashCode(of = {"id"})
-@Entity
-public class Servico {
+public class Modelo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     private String descricao;
-    private double valor;
-    @Enumerated(EnumType.STRING)
-    private ECategoria categoria;
+    @ManyToOne
+    @JoinColumn(name = "marca_id")
+    private Marca marca;
+    @Embedded
+    private Motor motor = new Motor();
 }

@@ -15,6 +15,11 @@ import lombok.Setter;
 public class Marca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String nome;
+
+    @Override
+    public String toString() {
+        return  nome;
+    }
 }
