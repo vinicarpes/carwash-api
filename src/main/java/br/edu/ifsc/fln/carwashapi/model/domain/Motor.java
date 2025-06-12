@@ -9,5 +9,6 @@ import lombok.Setter;
 @Getter @Setter
 public class Motor {
     private int potencia;
+    @Enumerated(EnumType.STRING)
     private ETipoCombustivel tipoCombustivel;
 }
